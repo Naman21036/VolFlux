@@ -1,0 +1,613 @@
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+html {
+
+    scroll-behavior: smooth;
+}
+
+body {
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #0f172a,
+            #020617
+        );
+
+    color: white;
+
+    font-family: 'Inter', sans-serif;
+
+    overflow-x: hidden;
+}
+
+/* ============================================
+SCROLLBAR
+============================================ */
+
+::-webkit-scrollbar {
+
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+
+    background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+
+    background: #1e293b;
+
+    border-radius: 10px;
+}
+
+/* ============================================
+NAVBAR
+============================================ */
+
+.navbar {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 22px 60px;
+
+    background: rgba(2, 6, 23, 0.75);
+
+    backdrop-filter: blur(18px);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.05);
+}
+
+.logo {
+
+    font-size: 34px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    color: #38bdf8;
+}
+
+.nav-links {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 35px;
+}
+
+.nav-links a {
+
+    color: #cbd5e1;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+
+    color: #38bdf8;
+}
+
+/* ============================================
+HEADER
+============================================ */
+
+.dashboard-header {
+
+    width: 100%;
+
+    padding-top: 100px;
+
+    padding-bottom: 70px;
+
+    text-align: center;
+}
+
+.header-content {
+
+    width: 90%;
+
+    margin: auto;
+}
+
+.dashboard-header h1 {
+
+    font-size: 72px;
+
+    font-weight: 800;
+
+    line-height: 1.1;
+
+    margin-bottom: 20px;
+}
+
+.dashboard-header p {
+
+    font-size: 22px;
+
+    color: #94a3b8;
+}
+
+/* ============================================
+SECTIONS
+============================================ */
+
+.section {
+
+    width: 92%;
+
+    margin: auto;
+
+    margin-bottom: 70px;
+}
+
+.section-header {
+
+    margin-bottom: 30px;
+}
+
+.section-header h2 {
+
+    font-size: 34px;
+
+    font-weight: 700;
+}
+
+/* ============================================
+UPLOAD
+============================================ */
+
+.upload-wrapper {
+
+    width: 92%;
+
+    margin: auto;
+
+    margin-bottom: 70px;
+}
+
+.upload-card {
+
+    background:
+        rgba(15,23,42,0.75);
+
+    border:
+        1px solid rgba(255,255,255,0.05);
+
+    border-radius: 28px;
+
+    padding: 40px;
+
+    backdrop-filter: blur(16px);
+
+    box-shadow:
+        0px 10px 40px rgba(0,0,0,0.3);
+}
+
+.upload-card h2 {
+
+    font-size: 32px;
+
+    margin-bottom: 10px;
+}
+
+.upload-card p {
+
+    color: #94a3b8;
+
+    margin-bottom: 30px;
+}
+
+.upload-controls {
+
+    display: flex;
+
+    gap: 20px;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+}
+
+input[type="file"] {
+
+    background: #0f172a;
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    color: white;
+}
+
+button {
+
+    background:
+        linear-gradient(
+            135deg,
+            #38bdf8,
+            #0ea5e9
+        );
+
+    border: none;
+
+    color: white;
+
+    padding: 14px 30px;
+
+    border-radius: 14px;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+button:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0px 10px 30px rgba(56,189,248,0.3);
+}
+
+/* ============================================
+METRICS
+============================================ */
+
+.metrics-container {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(260px, 1fr));
+
+    gap: 25px;
+}
+
+.metric-card {
+
+    background:
+        rgba(15,23,42,0.75);
+
+    border:
+        1px solid rgba(255,255,255,0.05);
+
+    border-radius: 24px;
+
+    padding: 35px;
+
+    backdrop-filter: blur(18px);
+
+    transition: 0.3s;
+}
+
+.metric-card:hover {
+
+    transform: translateY(-5px);
+
+    border-color: #38bdf8;
+}
+
+.metric-label {
+
+    color: #94a3b8;
+
+    font-size: 16px;
+
+    margin-bottom: 18px;
+}
+
+.metric-value {
+
+    font-size: 42px;
+
+    font-weight: 800;
+
+    color: #38bdf8;
+}
+
+/* ============================================
+DIAGNOSTICS
+============================================ */
+
+.diagnostics-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(240px, 1fr));
+
+    gap: 25px;
+}
+
+.diagnostic-card {
+
+    background:
+        rgba(15,23,42,0.75);
+
+    border:
+        1px solid rgba(255,255,255,0.05);
+
+    border-radius: 24px;
+
+    padding: 30px;
+
+    transition: 0.3s;
+}
+
+.diagnostic-card:hover {
+
+    transform: translateY(-4px);
+
+    border-color: #38bdf8;
+}
+
+.diagnostic-card h3 {
+
+    color: #94a3b8;
+
+    margin-bottom: 18px;
+}
+
+.diagnostic-card p {
+
+    font-size: 26px;
+
+    font-weight: 700;
+
+    color: #38bdf8;
+}
+
+/* ============================================
+STATUS
+============================================ */
+
+.status-container {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 30px;
+}
+
+.status-card {
+
+    background:
+        rgba(15,23,42,0.75);
+
+    border:
+        1px solid rgba(255,255,255,0.05);
+
+    border-radius: 28px;
+
+    padding: 45px;
+
+    text-align: center;
+}
+
+.status-title {
+
+    font-size: 18px;
+
+    color: #94a3b8;
+
+    margin-bottom: 25px;
+}
+
+.badge {
+
+    display: inline-block;
+
+    padding: 14px 28px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(56,189,248,0.15);
+
+    color: #38bdf8;
+
+    font-weight: 700;
+
+    font-size: 18px;
+}
+
+.signal-badge {
+
+    background:
+        rgba(34,197,94,0.15);
+
+    color: #22c55e;
+}
+
+/* ============================================
+CHARTS
+============================================ */
+
+.chart-container {
+
+    background:
+        rgba(15,23,42,0.75);
+
+    border:
+        1px solid rgba(255,255,255,0.05);
+
+    border-radius: 28px;
+
+    padding: 25px;
+
+    overflow: hidden;
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0px 10px 40px rgba(0,0,0,0.3);
+}
+
+/* ============================================
+PLOTLY FIX
+============================================ */
+
+.plotly-graph-div {
+
+    border-radius: 18px !important;
+}
+
+/* ============================================
+FOOTER
+============================================ */
+
+footer {
+
+    margin-top: 100px;
+
+    padding: 60px 20px;
+
+    text-align: center;
+
+    border-top:
+        1px solid rgba(255,255,255,0.05);
+}
+
+.footer-content h3 {
+
+    font-size: 28px;
+
+    color: #38bdf8;
+
+    margin-bottom: 15px;
+}
+
+.footer-content p {
+
+    color: #cbd5e1;
+
+    margin-bottom: 12px;
+}
+
+.footer-content span {
+
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+/* ============================================
+RESPONSIVE
+============================================ */
+
+@media(max-width: 1100px) {
+
+    .dashboard-header h1 {
+
+        font-size: 56px;
+    }
+
+    .metrics-container {
+
+        grid-template-columns:
+            repeat(auto-fit, minmax(220px, 1fr));
+    }
+}
+
+@media(max-width: 900px) {
+
+    .navbar {
+
+        flex-direction: column;
+
+        gap: 20px;
+
+        padding: 20px;
+    }
+
+    .nav-links {
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .dashboard-header h1 {
+
+        font-size: 44px;
+    }
+
+    .dashboard-header p {
+
+        font-size: 18px;
+    }
+
+    .status-container {
+
+        grid-template-columns: 1fr;
+    }
+
+    .upload-controls {
+
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    button {
+
+        width: 100%;
+    }
+}
+
+@media(max-width: 600px) {
+
+    .dashboard-header {
+
+        padding-top: 70px;
+    }
+
+    .dashboard-header h1 {
+
+        font-size: 36px;
+    }
+
+    .section-header h2 {
+
+        font-size: 28px;
+    }
+
+    .metric-value {
+
+        font-size: 34px;
+    }
+}
