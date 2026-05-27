@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <!-- AUTO REFRESH -->
+
+    <meta
+        http-equiv="refresh"
+        content="60"
+    >
+
+    <title>
+        VolFlux Dashboard
+    </title>
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css"
+    >
+
+    <!-- GOOGLE FONT -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- PLOTLY -->
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- ============================================
+    NAVBAR
+    ============================================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            VolFlux
+
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/">
+                Home
+            </a>
+
+            <a href="/run">
+                Default Dataset
+            </a>
+
+            <a href="/live/AAPL">
+                AAPL
+            </a>
+
+            <a href="/live/BTC-USD">
+                BTC
+            </a>
+
+            <a href="/live/ETH-USD">
+                ETH
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- ============================================
+    HERO HEADER
+    ============================================= -->
+
+    <section class="dashboard-header">
+
+        <div class="header-content">
+
+            <h1>
+                Volatility Forecasting Dashboard
+            </h1>
+
+            <p>
+                Real Time Risk Adaptive Trading Analytics Platform
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ============================================
+    UPLOAD SECTION
+    ============================================= -->
+
+    <section class="upload-wrapper">
+
+        <div class="upload-card">
+
+            <h2>
+                Upload Market Dataset
+            </h2>
+
+            <p>
+                Upload any stock, crypto, or index CSV
+            </p>
+
+            <form
+                action="/upload"
+                method="post"
+                enctype="multipart/form-data"
+            >
+
+                <div class="upload-controls">
+
+                    <input
+                        type="file"
+                        name="file"
+                        required
+                    >
+
+                    <button type="submit">
+
+                        Run Pipeline
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <!-- ============================================
+    PERFORMANCE METRICS
+    ============================================= -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <h2>
+                Performance Metrics
+            </h2>
+
+        </div>
+
+        <div class="metrics-container">
+
+            {% for key, value in metrics.items() %}
+
+            <div class="metric-card">
+
+                <div class="metric-label">
+
+                    {{ key }}
+
+                </div>
+
+                <div class="metric-value">
+
+                    {{ value }}
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+    <!-- ============================================
+    DIAGNOSTICS
+    ============================================= -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <h2>
+                Time Series Diagnostics
+            </h2>
+
+        </div>
+
+        <div class="diagnostics-grid">
+
+            {% for key, value in diagnostics.items() %}
+
+            <div class="diagnostic-card">
+
+                <h3>
+                    {{ key }}
+                </h3>
+
+                <p>
+                    {{ value }}
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+    <!-- ============================================
+    MARKET STATUS
+    ============================================= -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <h2>
+                Market Status
+            </h2>
+
+        </div>
+
+        <div class="status-container">
+
+            <!-- REGIME -->
+
+            <div class="status-card">
+
+                <div class="status-title">
+
+                    Market Regime
+
+                </div>
+
+                <div class="badge">
+
+                    {{ regime }}
+
+                </div>
+
+            </div>
+
+            <!-- SIGNAL -->
+
+            <div class="status-card">
+
+                <div class="status-title">
+
+                    Trading Signal
+
+                </div>
+
+                <div class="badge signal-badge">
+
+                    {{ signal }}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ============================================
+    VOLATILITY CHART
+    ============================================= -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <h2>
+                Volatility Analysis
+            </h2>
+
+        </div>
+
+        <div class="chart-container">
+
+            {{ volatility_chart | safe }}
+
+        </div>
+
+    </section>
+
+    <!-- ============================================
+    FORECAST CHART
+    ============================================= -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <h2>
+                Future Volatility Forecast
+            </h2>
+
+        </div>
+
+        <div class="chart-container">
+
+            {{ forecast_chart | safe }}
+
+        </div>
+
+    </section>
+
+    <!-- ============================================
+    EQUITY CURVE
+    ============================================= -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <h2>
+                Strategy Performance
+            </h2>
+
+        </div>
+
+        <div class="chart-container">
+
+            {{ equity_chart | safe }}
+
+        </div>
+
+    </section>
+
+    <!-- ============================================
+    CANDLESTICK CHART
+    ============================================= -->
+
+    {% if candlestick_chart %}
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <h2>
+                Candlestick Analysis
+            </h2>
+
+        </div>
+
+        <div class="chart-container">
+
+            {{ candlestick_chart | safe }}
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+    <!-- ============================================
+    FOOTER
+    ============================================= -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <h3>
+                VolFlux
+            </h3>
+
+            <p>
+                Quantitative Volatility Intelligence Platform
+            </p>
+
+            <span>
+                Built using FastAPI, GARCH Modeling, Plotly & Quantitative Finance Techniques
+            </span>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
