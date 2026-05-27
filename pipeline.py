@@ -1,4 +1,6 @@
 import pandas as pd
+from src.preprocessing import DataPreprocessor
+from src.diagnostics import TimeSeriesDiagnostics
 from src.modeling import VolatilityModel
 from src.forecasting import VolatilityForecaster
 from src.regime import MarketRegimeDetector
@@ -21,6 +23,10 @@ class VolatilityPipeline:
             return_column
         )
 
+        self.preprocessor = None
+
+        self.diagnostics = None
+
         self.model = None
 
         self.forecaster = None
@@ -34,6 +40,40 @@ class VolatilityPipeline:
         self.metrics = None
 
         self.final_df = None
+
+    # PREPROCESSING
+
+    def run_preprocessing(self):
+
+        self.preprocessor = (
+            DataPreprocessor(
+                self.df
+            )
+        )
+
+        self.df = (
+            self.preprocessor
+            .run_pipeline()
+        )
+
+        return self.df
+    
+    # DIAGNOSTICS
+
+    def run_diagnostics(self):
+
+        self.diagnostics = (
+            TimeSeriesDiagnostics(
+                self.df
+            )
+        )
+
+        diagnostic_results = (
+            self.diagnostics
+            .run_diagnostics()
+        )
+
+        return diagnostic_results
 
     # MODELING STAGE
 
@@ -111,7 +151,7 @@ class VolatilityPipeline:
 
         self.regime_detector = (
             MarketRegimeDetector(
-                self.df["Volatility"]
+                self.df
             )
         )
 
@@ -215,6 +255,29 @@ class VolatilityPipeline:
     def run_pipeline(self):
 
         print(
+            "\nRunning Preprocessing..."
+        )
+
+        self.run_preprocessing()
+
+        print(
+            "Preprocessing Completed"
+        )
+
+        print(
+            "\nRunning Diagnostics..."
+        )
+
+        diagnostic_results = (
+            self.run_diagnostics()
+        )
+
+        print(
+            "Diagnostics Completed"
+        )
+
+
+        print(
             "\nRunning Modeling Stage..."
         )
 
@@ -283,6 +346,9 @@ class VolatilityPipeline:
 
             "final_dataframe":
             self.final_df,
+
+            "diagnostics":
+            diagnostic_results,
 
             "backtest_metrics":
             backtest_metrics,
