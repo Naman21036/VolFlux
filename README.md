@@ -187,6 +187,7 @@ Docker Deployment
 Cloud Deployment
 User Authentication
 Multi Asset Portfolio Analytics
+
 Author
 
 Naman Gupta, Ananya
