@@ -190,4 +190,4 @@ Multi Asset Portfolio Analytics
 
 Author
 
-Naman Gupta, Ananya
+Naman Gupta, Ananya Hadimani
