@@ -3,11 +3,11 @@ pandas
 scikit-learn
 matplotlib
 seaborn
-tensorflow==2.19.0
-flask
-gunicorn
-requests
-beautifulsoup4
-yfinance
+plotly
 statsmodels
 arch
+fastapi
+uvicorn
+jinja2
+python-multipart
+yfinance
