@@ -3,13 +3,11 @@ pandas
 scikit-learn
 matplotlib
 seaborn
-tensorflow
-keras
+tensorflow==2.19.0
 flask
 gunicorn
 requests
 beautifulsoup4
 yfinance
 statsmodels
-lstm
 arch
