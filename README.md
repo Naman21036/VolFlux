@@ -1,61 +1,151 @@
-VolFlux
+# VolFlux 📈
 
-VolFlux is a quantitative volatility forecasting and risk adaptive trading platform built using Python, FastAPI, GARCH modeling, and interactive financial dashboards.
+**Volatility Forecasting & Risk Adaptive Trading Platform**
 
-The project analyzes financial time series data, detects volatility regimes, forecasts future market volatility, generates trading signals, and evaluates strategy performance through backtesting.
+VolFlux is an end to end quantitative finance platform that forecasts market volatility, detects volatility regimes, generates risk adaptive trading signals, and evaluates strategy performance through backtesting.
 
-Features
-Volatility Forecasting using GARCH Models
-Time Series Diagnostics
-Regime Detection
-Risk Adaptive Trading Strategy
-Backtesting Engine
-Performance Evaluation Metrics
-Interactive FastAPI Dashboard
-Live Market Data using Yahoo Finance API
-Candlestick & Volatility Charts
-CSV Upload Support
-Multi Asset Support (Stocks, Crypto, Indices)
-Pipeline Architecture
-Dataset
-   ↓
+Built using FastAPI, GARCH modeling, statistical time series analysis, and interactive financial dashboards, VolFlux transforms raw market data into actionable risk insights for traders, analysts, and quantitative researchers.
+
+---
+
+## 🌐 Live Demo
+
+**Application:** https://volflux-ce323960.fastapicloud.dev/
+
+**GitHub Repository:** https://github.com/Naman21036/VolFlux
+
+---
+
+## 🚀 Key Features
+
+### Market Data Processing
+
+* CSV based market data ingestion
+* Live market data integration using Yahoo Finance
+* Automated preprocessing and feature engineering
+* Log return computation
+* Missing value handling
+
+### Time Series Diagnostics
+
+* Augmented Dickey Fuller (ADF) Stationarity Test
+* Autocorrelation Function (ACF) Analysis
+* Partial Autocorrelation Function (PACF) Analysis
+* Volatility Clustering Detection
+* ARCH Effect Detection
+
+### Volatility Modeling
+
+* ARMA Mean Modeling
+* GARCH(1,1) Volatility Modeling
+* Conditional Volatility Estimation
+* Multi Step Volatility Forecasting
+
+### Market Regime Detection
+
+* Stable Market Regime
+* Neutral Market Regime
+* Risky Market Regime
+
+### Trading Engine
+
+* Dynamic Position Sizing
+* Risk Adaptive Trading Signals
+* Volatility Driven Exposure Control
+* Buy / Reduce Exposure Recommendations
+
+### Backtesting & Evaluation
+
+* Strategy Backtesting
+* Benchmark Comparison
+* Equity Curve Analysis
+* Risk Adjusted Performance Evaluation
+
+### Interactive Dashboard
+
+* Volatility Visualization
+* Forecast Visualization
+* Candlestick Charts
+* Strategy Performance Tracking
+* Market Regime Dashboard
+
+---
+
+## 🏗 System Architecture
+
+```text
+Market Dataset
+      │
+      ▼
 Preprocessing
-   ↓
+      │
+      ▼
 Time Series Diagnostics
-   ↓
-Volatility Modeling
-   ↓
-Forecasting
-   ↓
-Regime Detection
-   ↓
-Trading Strategy
-   ↓
+      │
+      ▼
+ARMA + GARCH Modeling
+      │
+      ▼
+Volatility Forecasting
+      │
+      ▼
+Market Regime Detection
+      │
+      ▼
+Trading Signal Generation
+      │
+      ▼
 Backtesting
-   ↓
+      │
+      ▼
 Performance Evaluation
-   ↓
+      │
+      ▼
 Interactive Dashboard
-Tech Stack
-Backend
-FastAPI
-Python
-Data Science & Quantitative Finance
-Pandas
-NumPy
-Statsmodels
-ARCH
-Scikit Learn
-Visualization
-Plotly
-Matplotlib
-Seaborn
-Frontend
-HTML
-CSS
-Jinja2 Templates
-Project Structure
-VolFlux/
+```
+
+---
+
+## 🛠 Tech Stack
+
+### Backend
+
+* FastAPI
+* Python
+
+### Quantitative Finance
+
+* Statsmodels
+* ARCH
+* NumPy
+* Pandas
+
+### Machine Learning & Analytics
+
+* Scikit Learn
+
+### Visualization
+
+* Plotly
+* Matplotlib
+* Seaborn
+
+### Frontend
+
+* HTML
+* CSS
+* Jinja2
+
+### Data Sources
+
+* Yahoo Finance API
+
+---
+
+## 📂 Project Structure
+
+```text
+VolFlux
 │
 ├── app.py
 ├── pipeline.py
@@ -63,7 +153,6 @@ VolFlux/
 ├── requirements.txt
 │
 ├── data/
-│
 ├── notebooks/
 │
 ├── src/
@@ -84,110 +173,154 @@ VolFlux/
 │   └── style.css
 │
 └── README.md
-Installation
+```
 
-Clone the repository:
+---
 
+## ⚙️ Installation
+
+### Clone Repository
+
+```bash
 git clone https://github.com/Naman21036/VolFlux.git
-
-Move into the project directory:
-
 cd VolFlux
+```
 
-Create virtual environment:
+### Create Virtual Environment
 
+```bash
 python -m venv .venv
+```
 
-Activate virtual environment:
+### Activate Environment
 
-Windows
+Windows:
+
+```bash
 .venv\Scripts\activate
-Linux / Mac
+```
+
+Linux / macOS:
+
+```bash
 source .venv/bin/activate
+```
 
-Install dependencies:
+### Install Dependencies
 
+```bash
 pip install -r requirements.txt
-Running the Application
+```
+
+---
+
+## ▶️ Running the Application
 
 Start the FastAPI server:
 
+```bash
 uvicorn app:app --reload
+```
 
-Open browser:
+Open:
 
+```text
 http://127.0.0.1:8000
-Supported Functionalities
-Dataset Upload
+```
 
-Upload custom CSV datasets directly from the dashboard.
+---
 
-Live Market Data
+## 📊 Supported Functionalities
 
-Analyze live assets directly from Yahoo Finance API.
+### Dataset Upload
+
+Upload custom market datasets directly through the dashboard.
+
+### Live Market Analysis
 
 Examples:
 
+```text
 /live/AAPL
 /live/BTC-USD
 /live/ETH-USD
-Time Series Diagnostics
-Stationarity Testing
-ACF Analysis
-PACF Analysis
-ARCH Effect Detection
-Volatility Clustering Detection
-Volatility Modeling
-ARMA Mean Modeling
-GARCH Volatility Modeling
-Forecasting
+```
 
-Predict future market volatility for upcoming trading periods.
+### Diagnostics Dashboard
 
-Regime Detection
+* Stationarity Testing
+* ACF Analysis
+* PACF Analysis
+* ARCH Detection
+* Volatility Clustering Detection
 
-Classify market conditions into:
+### Forecasting Engine
 
-Stable
-Neutral
-High Risk
-Trading Strategy
+Predict future market volatility for upcoming trading sessions.
 
-Generate:
+### Regime Classification
 
-Buy Signals
-Reduce Exposure Signals
-Dynamic Position Sizing
-Backtesting
+| Regime  | Market Condition    |
+| ------- | ------------------- |
+| Stable  | Low Volatility      |
+| Neutral | Moderate Volatility |
+| Risky   | High Volatility     |
 
-Evaluate strategy performance against market benchmark.
+### Trading Signal Engine
 
-Performance Metrics
-Sharpe Ratio
-Sortino Ratio
-Maximum Drawdown
-Total Return
-Annualized Volatility
-Win Rate
-Example Dashboard Components
-Interactive Volatility Charts
-Forecast Visualization
-Candlestick Charts
-Equity Curves
-Risk Regime Dashboard
-Trading Signals
-Performance Cards
-Future Improvements
-Real Time Streaming
-WebSocket Integration
-LSTM Volatility Forecasting
-Portfolio Optimization
-Monte Carlo Simulations
-Docker Deployment
-Cloud Deployment
-User Authentication
-Multi Asset Portfolio Analytics
+| Market State    | Action            |
+| --------------- | ----------------- |
+| Low Volatility  | Increase Exposure |
+| Neutral         | Hold              |
+| High Volatility | Reduce Exposure   |
 
-Author
+---
 
-Naman Gupta, Ananya Hadimani
+## 📈 Performance Metrics
+
+VolFlux evaluates strategies using:
+
+* Sharpe Ratio
+* Sortino Ratio
+* Maximum Drawdown
+* Annualized Return
+* Annualized Volatility
+* Win Rate
+* Total Return
+
+---
+
+## 🔮 Future Roadmap
+
+* LSTM Based Volatility Forecasting
+* EGARCH & TGARCH Models
+* Real Time Streaming Data
+* WebSocket Integration
+* Portfolio Optimization
+* Monte Carlo Risk Simulation
+* Docker Containerization
+* Cloud Native Deployment
+* Multi Asset Portfolio Analytics
+* User Authentication & Profiles
+
+---
+
+## 👥 Contributors
+
+### Naman Gupta
+
+* Quantitative Research
+* System Design
+* Backend Development
+
+### Ananya Hadimani
+
+* Research
+* Analytics
+* Project Development
+
+---
+
+## ⭐ Acknowledgements
+
+This project was developed to explore practical applications of quantitative finance, volatility forecasting, statistical modeling, and risk adaptive trading systems using modern Python based technologies.
