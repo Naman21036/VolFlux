@@ -6,7 +6,7 @@ plotly
 statsmodels
 arch
 scikit-learn
-fastapi
+fastapi[standard]
 uvicorn
 jinja2
 python-multipart
