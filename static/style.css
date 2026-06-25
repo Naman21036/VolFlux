@@ -1,3 +1,13 @@
+:root {
+    --accent: #38bdf8;
+    --accent-glow: rgba(56, 189, 248, 0.3);
+    --accent-dim: rgba(56, 189, 248, 0.15);
+    --bg-card: rgba(15, 23, 42, 0.75);
+    --text-muted: #94a3b8;
+    --text-mid: #cbd5e1;
+    --border: rgba(255, 255, 255, 0.05);
+}
+
 * {
 
     margin: 0;
@@ -169,6 +179,29 @@ SECTIONS
 .section-header {
 
     margin-bottom: 30px;
+
+    position: relative;
+
+    padding-left: 20px;
+}
+
+.section-header::before {
+
+    content: '';
+
+    position: absolute;
+
+    left: 0;
+
+    top: 4px;
+
+    bottom: 4px;
+
+    width: 3px;
+
+    background: linear-gradient(180deg, #38bdf8, #818cf8);
+
+    border-radius: 999px;
 }
 
 .section-header h2 {
@@ -609,5 +642,349 @@ RESPONSIVE
     .metric-value {
 
         font-size: 34px;
+    }
+}
+
+/* ============================================
+GRADIENT TEXT
+============================================ */
+
+.gradient-text {
+
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    background-clip: text;
+}
+
+/* ============================================
+HERO (LANDING PAGE)
+============================================ */
+
+.hero {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 120px 20px 80px;
+}
+
+.hero-content {
+
+    max-width: 860px;
+
+    width: 100%;
+
+    text-align: center;
+
+    animation: fadeInUp 0.6s ease both;
+}
+
+.hero-badge {
+
+    display: inline-block;
+
+    padding: 8px 20px;
+
+    border-radius: 999px;
+
+    border: 1px solid rgba(56, 189, 248, 0.3);
+
+    color: #38bdf8;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.1em;
+
+    text-transform: uppercase;
+
+    margin-bottom: 32px;
+
+    background: rgba(56, 189, 248, 0.05);
+}
+
+.hero-title {
+
+    font-size: 72px;
+
+    font-weight: 800;
+
+    line-height: 1.1;
+
+    margin-bottom: 24px;
+}
+
+.hero-sub {
+
+    font-size: 20px;
+
+    color: #94a3b8;
+
+    line-height: 1.7;
+
+    max-width: 620px;
+
+    margin: 0 auto 48px;
+}
+
+/* ============================================
+CUSTOM FILE INPUT
+============================================ */
+
+.file-label {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    background: #0f172a;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    padding: 14px 18px;
+
+    border-radius: 12px;
+
+    color: #94a3b8;
+
+    cursor: pointer;
+
+    flex: 1;
+
+    font-size: 15px;
+
+    transition: 0.2s;
+}
+
+.file-label:hover {
+
+    border-color: rgba(56, 189, 248, 0.3);
+
+    color: #cbd5e1;
+}
+
+.file-label input[type="file"] {
+
+    display: none;
+}
+
+/* ============================================
+TICKER GRID (LANDING PAGE)
+============================================ */
+
+.ticker-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 16px;
+
+    margin-top: 32px;
+}
+
+.ticker-card {
+
+    background: rgba(15, 23, 42, 0.75);
+
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    border-radius: 20px;
+
+    padding: 24px 20px;
+
+    text-decoration: none;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    transition: 0.3s;
+
+    text-align: left;
+}
+
+.ticker-card:hover {
+
+    border-color: #38bdf8;
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.15);
+}
+
+.ticker-label {
+
+    font-weight: 700;
+
+    font-size: 18px;
+
+    color: white;
+}
+
+.ticker-action {
+
+    font-size: 14px;
+
+    color: #38bdf8;
+}
+
+/* ============================================
+LOADING OVERLAY
+============================================ */
+
+.loading-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(2, 6, 23, 0.85);
+
+    backdrop-filter: blur(12px);
+
+    z-index: 9999;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 24px;
+
+    color: #cbd5e1;
+
+    font-size: 18px;
+}
+
+.loading-overlay.hidden {
+
+    display: none;
+}
+
+.spinner {
+
+    width: 48px;
+
+    height: 48px;
+
+    border: 3px solid rgba(56, 189, 248, 0.2);
+
+    border-top-color: #38bdf8;
+
+    border-radius: 50%;
+
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+
+    to { transform: rotate(360deg); }
+}
+
+/* ============================================
+ANIMATIONS
+============================================ */
+
+@keyframes fadeInUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section {
+
+    animation: fadeInUp 0.5s ease both;
+}
+
+/* ============================================
+LAST UPDATED BAR
+============================================ */
+
+.last-updated {
+
+    font-size: 14px;
+
+    color: #64748b;
+
+    margin-top: 14px;
+}
+
+.last-updated a {
+
+    color: #38bdf8;
+
+    text-decoration: none;
+}
+
+.last-updated a:hover {
+
+    text-decoration: underline;
+}
+
+/* ============================================
+REDUCED MOTION
+============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .section,
+    .hero-content {
+
+        animation: none;
+    }
+}
+
+/* ============================================
+RESPONSIVE — NEW COMPONENTS
+============================================ */
+
+@media(max-width: 900px) {
+
+    .hero-title {
+
+        font-size: 48px;
+    }
+
+    .ticker-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 600px) {
+
+    .hero-title {
+
+        font-size: 36px;
+    }
+
+    .hero-sub {
+
+        font-size: 17px;
     }
 }
