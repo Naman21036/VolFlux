@@ -2,228 +2,200 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>
-        VolFlux — Volatility Forecasting
-    </title>
-
-    <link
-        rel="stylesheet"
-        href="/static/style.css"
-    >
-
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VolFlux &mdash; Quantitative Volatility Forecasting</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <!-- ============================================
-    NAVBAR
-    ============================================= -->
-
+    <!-- NAVBAR -->
     <nav class="navbar">
-
-        <div class="logo">
-            VolFlux
-        </div>
-
+        <div class="logo">VolFlux</div>
         <div class="nav-links">
-
-            <a href="/" class="active">
-                Home
-            </a>
-
-            <a href="/run">
-                Default Dataset
-            </a>
-
-            <a href="/live/AAPL">
-                AAPL
-            </a>
-
-            <a href="/live/BTC-USD">
-                BTC
-            </a>
-
-            <a href="/live/ETH-USD">
-                ETH
-            </a>
-
+            <a href="/" class="active">Home</a>
+            <a href="/run">Default Dataset</a>
+            <a href="/live/AAPL">AAPL</a>
+            <a href="/live/BTC-USD">BTC</a>
+            <a href="/live/ETH-USD">ETH</a>
         </div>
-
     </nav>
 
-    <!-- ============================================
-    HERO
-    ============================================= -->
-
+    <!-- HERO -->
     <section class="hero">
-
         <div class="hero-content">
 
             <div class="hero-badge">
+                <span class="badge-dot"></span>
                 Quantitative Finance Platform
             </div>
 
             <h1 class="hero-title">
                 Predict <span class="gradient-text">Volatility</span>,<br>
-                Trade with Confidence
+                Trade with Precision
             </h1>
 
             <p class="hero-sub">
-                Upload your market data or explore live tickers. VolFlux applies
-                GARCH modeling and risk-adaptive algorithms to forecast volatility
-                and generate trading signals.
+                GARCH modeling, risk-adaptive algorithms, and real-time market
+                intelligence &mdash; upload your dataset or connect to live data in seconds.
             </p>
 
-            <!-- UPLOAD -->
-
-            <div class="upload-card">
-
-                <h2>
-                    Upload Market Dataset
-                </h2>
-
-                <p>
-                    Upload any stock, crypto, or index CSV
-                </p>
-
-                <form
-                    action="/upload"
-                    method="post"
-                    enctype="multipart/form-data"
-                    id="upload-form"
-                >
-
-                    <div class="upload-controls">
-
-                        <label class="file-label">
-                            <input
-                                type="file"
-                                name="file"
-                                required
-                                id="file-input"
-                            >
-                            <span id="file-name">
-                                Choose CSV file&hellip;
-                            </span>
-                        </label>
-
-                        <button type="submit">
-                            Run Pipeline
-                        </button>
-
-                    </div>
-
-                </form>
-
+            <!-- STATS -->
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="stat-num">6+</span>
+                    <span class="stat-label">Risk Metrics</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="stat-num">GARCH</span>
+                    <span class="stat-label">Vol Model</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="stat-num">Live</span>
+                    <span class="stat-label">Market Data</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="stat-num">FastAPI</span>
+                    <span class="stat-label">Backend</span>
+                </div>
             </div>
 
-            <!-- QUICK LINKS -->
+            <!-- UPLOAD ZONE -->
+            <div class="upload-zone">
+                <form action="/upload" method="post" enctype="multipart/form-data" id="upload-form">
+                    <input type="file" name="file" id="file-input" accept=".csv">
+                    <div class="upload-zone-inner" id="drop-zone">
+                        <div class="upload-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="17 8 12 3 7 8"/>
+                                <line x1="12" y1="3" x2="12" y2="15"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="upload-main" id="upload-label">
+                                Drop your CSV here or <span class="upload-browse">browse files</span>
+                            </p>
+                            <p class="upload-hint">Supports stock, crypto, and index time-series data</p>
+                        </div>
+                    </div>
+                    <div class="upload-actions">
+                        <button type="submit" class="btn-primary" id="run-btn" disabled>
+                            <span>Run Pipeline</span>
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
 
+            <!-- DIVIDER -->
+            <div class="divider">or explore live data</div>
+
+            <!-- TICKER CARDS -->
             <div class="ticker-grid">
-
                 <a href="/run" class="ticker-card">
-                    <span class="ticker-label">Default Dataset</span>
-                    <span class="ticker-action">Explore &rarr;</span>
+                    <div class="ticker-card-top">
+                        <span class="ticker-name">Sample</span>
+                        <span class="ticker-tag">Dataset</span>
+                    </div>
+                    <div class="ticker-card-action">Explore analysis &rarr;</div>
                 </a>
-
                 <a href="/live/AAPL" class="ticker-card">
-                    <span class="ticker-label">AAPL</span>
-                    <span class="ticker-action">Live &rarr;</span>
+                    <div class="ticker-card-top">
+                        <span class="ticker-name">AAPL</span>
+                        <span class="ticker-tag live-tag">Live</span>
+                    </div>
+                    <div class="ticker-card-action">Apple Inc. &rarr;</div>
                 </a>
-
                 <a href="/live/BTC-USD" class="ticker-card">
-                    <span class="ticker-label">BTC-USD</span>
-                    <span class="ticker-action">Live &rarr;</span>
+                    <div class="ticker-card-top">
+                        <span class="ticker-name">BTC</span>
+                        <span class="ticker-tag live-tag">Live</span>
+                    </div>
+                    <div class="ticker-card-action">Bitcoin USD &rarr;</div>
                 </a>
-
                 <a href="/live/ETH-USD" class="ticker-card">
-                    <span class="ticker-label">ETH-USD</span>
-                    <span class="ticker-action">Live &rarr;</span>
+                    <div class="ticker-card-top">
+                        <span class="ticker-name">ETH</span>
+                        <span class="ticker-tag live-tag">Live</span>
+                    </div>
+                    <div class="ticker-card-action">Ethereum USD &rarr;</div>
                 </a>
-
             </div>
 
         </div>
-
     </section>
 
-    <!-- ============================================
-    LOADING OVERLAY
-    ============================================= -->
-
-    <div id="loading-overlay" class="loading-overlay hidden">
-
-        <div class="spinner"></div>
-
-        <p>
-            Running volatility pipeline&hellip;
-        </p>
-
+    <!-- LOADING OVERLAY -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-card">
+            <div class="spinner"></div>
+            <h3>Running Volatility Pipeline</h3>
+            <p>Fitting GARCH model and computing risk metrics&hellip;</p>
+        </div>
     </div>
 
-    <!-- ============================================
-    FOOTER
-    ============================================= -->
-
+    <!-- FOOTER -->
     <footer>
-
         <div class="footer-content">
-
-            <h3>
-                VolFlux
-            </h3>
-
-            <p>
-                Quantitative Volatility Intelligence Platform
-            </p>
-
-            <span>
-                Built using FastAPI, GARCH Modeling, Plotly &amp; Quantitative Finance Techniques
-            </span>
-
+            <h3>VolFlux</h3>
+            <p>Quantitative Volatility Intelligence Platform</p>
+            <span>Built with FastAPI &middot; GARCH Modeling &middot; Plotly &middot; Python</span>
         </div>
-
     </footer>
 
     <script>
-        const fileInput = document.getElementById('file-input');
-        const fileNameEl = document.getElementById('file-name');
-        const form = document.getElementById('upload-form');
-        const overlay = document.getElementById('loading-overlay');
+        const fileInput  = document.getElementById('file-input');
+        const dropZone   = document.getElementById('drop-zone');
+        const uploadLabel = document.getElementById('upload-label');
+        const runBtn     = document.getElementById('run-btn');
+        const form       = document.getElementById('upload-form');
+        const overlay    = document.getElementById('loading-overlay');
 
-        fileInput.addEventListener('change', () => {
-            fileNameEl.textContent = fileInput.files[0]?.name || 'Choose CSV file…';
+        function setFile(file) {
+            if (!file) return;
+            uploadLabel.innerHTML = '<strong>' + file.name + '</strong> &mdash; ready to run';
+            runBtn.disabled = false;
+        }
+
+        // Click zone to open file picker
+        dropZone.addEventListener('click', () => fileInput.click());
+
+        // File chosen via dialog
+        fileInput.addEventListener('change', () => setFile(fileInput.files[0]));
+
+        // Drag and drop
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('drag-over');
+        });
+        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('drag-over');
+            const file = e.dataTransfer.files[0];
+            if (file) {
+                try {
+                    const dt = new DataTransfer();
+                    dt.items.add(file);
+                    fileInput.files = dt.files;
+                } catch (_) {}
+                setFile(file);
+            }
         });
 
-        form.addEventListener('submit', () => {
-            overlay.classList.remove('hidden');
-        });
+        // Show loading on submit
+        form.addEventListener('submit', () => overlay.classList.add('visible'));
     </script>
 
 </body>
-
 </html>
