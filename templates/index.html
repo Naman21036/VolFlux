@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VolFlux &mdash; Quantitative Volatility Forecasting</title>
-    <link rel="stylesheet" href="/static/style.css?v=4">
+    <link rel="stylesheet" href="/static/style.css?v=5">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -19,9 +19,8 @@
         <div class="nav-links">
             <a href="/" class="active">Home</a>
             <a href="/run">Default Dataset</a>
-            <a href="/live/AAPL">AAPL</a>
-            <a href="/live/BTC-USD">BTC</a>
-            <a href="/live/ETH-USD">ETH</a>
+            <a href="/dataset/aapl">AAPL</a>
+            <a href="/run">Nifty 50</a>
         </div>
     </nav>
 
@@ -98,37 +97,23 @@
             </div>
 
             <!-- DIVIDER -->
-            <div class="divider">or explore live data</div>
+            <div class="divider">or explore datasets</div>
 
             <!-- TICKER CARDS -->
             <div class="ticker-grid">
                 <a href="/run" class="ticker-card">
                     <div class="ticker-card-top">
-                        <span class="ticker-name">Sample</span>
+                        <span class="ticker-name">Nifty 50</span>
                         <span class="ticker-tag">Dataset</span>
                     </div>
-                    <div class="ticker-card-action">Explore analysis &rarr;</div>
+                    <div class="ticker-card-action">Nifty 50 Index &rarr;</div>
                 </a>
-                <a href="/live/AAPL" class="ticker-card">
+                <a href="/dataset/aapl" class="ticker-card">
                     <div class="ticker-card-top">
                         <span class="ticker-name">AAPL</span>
-                        <span class="ticker-tag live-tag">Live</span>
+                        <span class="ticker-tag">Dataset</span>
                     </div>
                     <div class="ticker-card-action">Apple Inc. &rarr;</div>
-                </a>
-                <a href="/live/BTC-USD" class="ticker-card">
-                    <div class="ticker-card-top">
-                        <span class="ticker-name">BTC</span>
-                        <span class="ticker-tag live-tag">Live</span>
-                    </div>
-                    <div class="ticker-card-action">Bitcoin USD &rarr;</div>
-                </a>
-                <a href="/live/ETH-USD" class="ticker-card">
-                    <div class="ticker-card-top">
-                        <span class="ticker-name">ETH</span>
-                        <span class="ticker-tag live-tag">Live</span>
-                    </div>
-                    <div class="ticker-card-action">Ethereum USD &rarr;</div>
                 </a>
             </div>
 
