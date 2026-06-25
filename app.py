@@ -1,5 +1,3 @@
-# app.py
-
 from fastapi import FastAPI
 from fastapi import Request
 from fastapi import UploadFile
@@ -347,7 +345,7 @@ def run_pipeline(request: Request):
     try:
 
         df = pd.read_csv(
-            "data/nifty50_enhanced.csv"
+            "data/nifty50_data.csv"
         )
 
         dashboard_data = (
@@ -370,6 +368,39 @@ def run_pipeline(request: Request):
             "error":
             str(e)
         }
+
+# AAPL LOCAL DATASET
+
+@app.get("/dataset/aapl")
+def aapl_dataset(request: Request):
+
+    try:
+
+        df = pd.read_csv(
+            "data/aapl_data.csv"
+        )
+
+        dashboard_data = (
+            generate_dashboard(df)
+        )
+
+        return templates.TemplateResponse(
+
+            request=request,
+
+            name="dashboard.html",
+
+            context=dashboard_data
+        )
+
+    except Exception as e:
+
+        return {
+
+            "error":
+            str(e)
+        }
+
 
 # LIVE MARKET DATA
 
