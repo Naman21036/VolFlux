@@ -384,13 +384,21 @@
     LOADING OVERLAY
     ============================================= -->
 
-    <div id="loading-overlay" class="loading-overlay hidden">
+    <div id="loading-overlay" class="loading-overlay">
 
-        <div class="spinner"></div>
+        <div class="loading-card">
 
-        <p>
-            Running volatility pipeline&hellip;
-        </p>
+            <div class="spinner"></div>
+
+            <h3>
+                Running Volatility Pipeline
+            </h3>
+
+            <p>
+                Fitting GARCH model and computing risk metrics&hellip;
+            </p>
+
+        </div>
 
     </div>
 
@@ -423,7 +431,7 @@
         const form = document.getElementById('upload-form');
         const overlay = document.getElementById('loading-overlay');
         if (form) {
-            form.addEventListener('submit', () => overlay.classList.remove('hidden'));
+            form.addEventListener('submit', () => overlay.classList.add('visible'));
         }
 
         // Refresh countdown replaces the removed meta refresh
