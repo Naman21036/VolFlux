@@ -11,13 +11,6 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <!-- AUTO REFRESH -->
-
-    <meta
-        http-equiv="refresh"
-        content="60"
-    >
-
     <title>
         VolFlux Dashboard
     </title>
@@ -101,12 +94,17 @@
 
         <div class="header-content">
 
-            <h1>
+            <h1 class="gradient-text">
                 Volatility Forecasting Dashboard
             </h1>
 
             <p>
                 Real Time Risk Adaptive Trading Analytics Platform
+            </p>
+
+            <p class="last-updated">
+                Auto-refresh in <span id="refresh-countdown">60</span>s &middot;
+                <a href="" onclick="location.reload(); return false;">Refresh now</a>
             </p>
 
         </div>
@@ -133,6 +131,7 @@
                 action="/upload"
                 method="post"
                 enctype="multipart/form-data"
+                id="upload-form"
             >
 
                 <div class="upload-controls">
@@ -382,6 +381,20 @@
     {% endif %}
 
     <!-- ============================================
+    LOADING OVERLAY
+    ============================================= -->
+
+    <div id="loading-overlay" class="loading-overlay hidden">
+
+        <div class="spinner"></div>
+
+        <p>
+            Running volatility pipeline&hellip;
+        </p>
+
+    </div>
+
+    <!-- ============================================
     FOOTER
     ============================================= -->
 
@@ -404,6 +417,32 @@
         </div>
 
     </footer>
+
+    <script>
+        // Loading state for upload form
+        const form = document.getElementById('upload-form');
+        const overlay = document.getElementById('loading-overlay');
+        if (form) {
+            form.addEventListener('submit', () => overlay.classList.remove('hidden'));
+        }
+
+        // Refresh countdown replaces the removed meta refresh
+        let seconds = 60;
+        const countdownEl = document.getElementById('refresh-countdown');
+        const timer = setInterval(() => {
+            seconds--;
+            if (countdownEl) countdownEl.textContent = seconds;
+            if (seconds <= 0) {
+                clearInterval(timer);
+                location.reload();
+            }
+        }, 1000);
+
+        // Highlight active nav link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            if (link.href === location.href) link.classList.add('active');
+        });
+    </script>
 
 </body>
 
